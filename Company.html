@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Register as Company - Business Explorer</title>
+</head>
+<body>
+    <header>
+        <div class="logo">Business Explorer</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Login/Register</a>
+        </nav>
+    </header>
+    <main>
+        <section class="register-form">
+            <h1>Register as Company</h1>
+            <form action="/submit-company" method="POST" enctype="multipart/form-data">
+                <label for="company-name">Company Name:</label>
+                <input type="text" id="company-name" name="company_name" required>
+                
+                <label for="industry">Industry:</label>
+                <select id="industry" name="industry" required>
+                    <option value="Technology">Technology</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Manufacturing">Manufacturing</option>
+                    <!-- Add more industries as needed -->
+                </select>
+
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country" required>
+
+                <label for="region">Region:</label>
+                <input type="text" id="region" name="region" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="website">Website:</label>
+                <input type="url" id="website" name="website">
+
+                <label for="certificate">Upload Business Certificate:</label>
+                <input type="file" id="cv" name="cv" accept=".pdf, .doc, .docx">
+
+                <label for="description">Description of Products and Services:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <!-- Same as the home page -->
+    </footer>
+</body>
+</html>

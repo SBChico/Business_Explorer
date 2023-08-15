@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="JobSeeker.css">
+    <script src="./api/jobseeker_registration.js" defer async></script>
+    
+
+    <title>Register as Job Seeker - Business Explorer</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Business Explorer</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="JobSeekerLogin.html">Login/Register</a>
+        </nav>
+    </header>
+    <main>
+        <div class="register-container">
+        <section class="register-form">
+            <h1>Register as Job Seeker</h1>
+            <form id="register-form" method="POST" enctype="multipart/form-data">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="education">Level of Education:</label>
+                <select id="education" name="education" required>
+                    <option value="High School">High School</option>
+                    <option value="Associate's Degree">Associate's Degree</option>
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Master's Degree">Master's Degree</option>
+                    <option value="Ph.D.">Ph.D.</option>
+                </select>
+
+                <label for="country">Country:</label>
+               <input type="text" id="country" name="country" required>
+               <label for="country">Country:</label>
+            
+                <label for="region">Region:</label>
+                <input type="text" id="region" name="region" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="skills">Skills (comma-separated):</label>
+                <input type="text" id="skills" name="skills">
+
+                <label for="cv">Upload CV or Resume:</label>
+                <input type="file" id="cv" name="cv" accept=".pdf, .jpg, .jpeg, .png">
+
+
+                <button type="submit" class="btn">Register</button>
+            </form></div>
+        </section>
+    </main>
+    <footer>
+        <!-- Same as the home page -->
+    </footer>
+</body>
+</html>

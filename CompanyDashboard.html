@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Company Dashboard</title>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="profile-section">
+            <h1>Welcome, [Company Name]!</h1>
+            <!-- Add other profile details here -->
+            <h2>Company Profile</h2>
+            <!-- Display company details -->
+            <a href="/edit-company-profile" class="btn">Edit Company Profile</a>
+        </div>
+        <div class="candidates-section">
+            <h2>Matched Job Seekers:</h2>
+            <!-- Dynamically populate this section with matched job seekers -->
+            <div class="candidate-card">
+                <h3>Job Seeker Name</h3>
+                <p>Education: [Degree]</p>
+                <p>Skills: [Skill list]</p>
+                <a href="/view-jobseeker-details">View Details</a>
+            </div>
+            <!-- Repeat the candidate-card div for each matched job seeker -->
+        </div>
+        <div class="post-job-section">
+            <h2>Post a New Job:</h2>
+            <form action="/post-job" method="post">
+                <input type="text" name="jobTitle" placeholder="Job Title" required>
+                <textarea name="jobDescription" placeholder="Job Description"></textarea>
+                <button type="submit" class="btn">Post Job</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    // Get the query parameters from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+
+    // Find the element where the name should be inserted
+    const welcomeMessage = document.querySelector('.profile-section h1');
+
+    // Replace the placeholder with the actual name
+    if (name) {
+        welcomeMessage.textContent = `Welcome, ${name}!`;
+    }
+</script>

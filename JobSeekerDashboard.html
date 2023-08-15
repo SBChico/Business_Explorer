@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    //<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="JobSeekerDashboard.css">
+    <title>Job Seeker Dashboard - Business Explorer</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="Images/Logo.jpg" alt="Business Explorer"></a>
+        </div>
+        <nav>
+            <div class="search-container">
+                <input type="text" placeholder="Search companies..." id="search">
+                <button type="submit" class="search-btn">Search</button>
+            </div>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Settings</a>
+        </nav>
+    </header>
+    <main class="dashboard-container">
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="Images/ChicoSB.jpeg" alt="Profile">
+                </div>
+                <h1>Welcome, [Job Seeker Name]!</h1>
+                <a href="/profile" class="btn">Profile</a>
+                <a href="https://www.ghanabusinessweb.com/" class="btn">Job Offers</a>
+                <a href="/news-feeds" class="btn">News Feeds</a>
+                <a href="/settings" class="btn">Settings</a>
+            </div>
+        </aside>
+        <section class="matches-section">
+            <h2>Matched Companies:</h2>
+            <!-- Dynamically populate this section with matched companies -->
+        </section>
+    </main>
+    <footer>
+        <!-- Footer Content -->
+    </footer>
+
+
+
+
+    <script>
+        // Get the query parameters from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        const region = urlParams.get('region');
+
+        const welcomeMessage = document.querySelector('.profile-section h1');
+
+    // Replace the placeholder with the actual name
+    if (name) {
+        welcomeMessage.textContent = `Welcome, ${name}!`;
+    }
+      
+        // Retrieve jobSeekerId from the session storage
+        const jobSeekerId = sessionStorage.getItem('jobSeekerId'); // Assuming you have stored jobSeekerId in sessionStorage
+      
+        // Check if jobSeekerId is defined
+        if (!jobSeekerId) {
+          console.error('jobSeekerId is not defined');
+          // You may want to handle this error, perhaps by redirecting to the login page
+        } else {
+          // Fetch the matched companies from the server, using the region and jobSeekerId
+          console.log(jobSeekerId);
+    
+          fetch(`/matched-companies/${jobSeekerId}`)
+            .then(response => response.json())
+            .then(data => {
+            const {data: companies} = data
+                
+              const matchesSection = document.querySelector('.matches-section');
+              companies.forEach(company => {
+                const companyCard = document.createElement('div');
+                companyCard.className = 'company-card';
+                companyCard.innerHTML = `<h3>${company.name}</h3><p>Phone: ${company.phone}</p>
+                <button class="btn view-details" data-company-id="${company.id}">View Details</button>`;
+                matchesSection.appendChild(companyCard);
+              });
+
+// Add event listeners to the "View Details" buttons
+document.querySelectorAll('.view-details').forEach(button => {
+            button.addEventListener('click', function() {
+                const companyId = this.getAttribute('data-company-id');
+                viewCompanyDetails(companyId);
+            });
+        });
+
+            })
+            .catch(error => {
+              console.error('An error occurred while fetching the matched companies:', error);
+            });
+
+            // Function to view company details (can be modified to show a modal or redirect to a specific page)
+              function viewCompanyDetails(companyId) {
+    // You can fetch detailed information about the company using the companyId
+    // and then display it in a modal or redirect to a specific page.
+    // Example:
+    window.location.href = `CompanyLogin.html`;
+}
+        }
+
+      </script>
+      
+    
+</body>
+</html>

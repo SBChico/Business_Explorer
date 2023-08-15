@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="JobSeekerLogin.css">
+    <script src="./api/jobseeker_login.js" defer async></script>
+    <title>Job Seeker Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Job Seeker Login</h1>
+        <form id="login-job-seeker" method="post">
+            <div class="input-group">
+                <label for="emailOrPhone">Email or Phone Number:</label>
+                <input type="text" name="emailOrPhone" id="emailOrPhone" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p>Not a member? <a href="/register-job-seeker">Register here</a></p>
+    </div>
+</body>
+</html>
